@@ -1,0 +1,125 @@
+:root {
+  font-family: Arial;
+  line-height: 1.5;
+
+  color: #f0f4f8;
+  background-color: #0a0f19;
+}
+
+body {
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  margin: 0 auto;
+}
+
+.order-book-area {
+  background-color: #131b29;
+  border-radius: 8px;
+  padding: 5px 0px;
+  .title {
+    font-size: 18px;
+    font-weight: 550;
+    padding: 5px 10px;
+  }
+
+  .buy-text {
+    color: #00b15d;
+  }
+
+  .sell-text {
+    color: #ff5b5a;
+  }
+
+  .total {
+    text-align: right;
+
+    .container {
+      direction: rtl;
+    }
+
+    .sell-progress {
+      background: rgba(255, 90, 90, 0.12);
+    }
+
+    .buy-progress {
+      background: rgba(16, 186, 104, 0.12);
+    }
+  }
+
+  .last-price {
+    margin: 2px -12px;
+    text-align: center;
+    font-size: 24px;
+
+    &.more-than {
+      background: rgba(16, 186, 104, 0.12);
+      color: #00b15d;
+    }
+
+    &.less-than {
+      background: rgba(255, 90, 90, 0.12);
+      color: #ff5b5a;
+    }
+  }
+
+  .buy-blinking {
+    animation: buyBlinkAnimation 0.3s ease-in-out forwards;
+
+    @keyframes buyBlinkAnimation {
+      0%,
+      100% {
+        background-color: #ffffff00;
+      }
+
+      50% {
+        background-color: rgba(0, 177, 93, 0.5);
+      }
+    }
+  }
+
+  .sell-blinking {
+    animation: sellBlinkAnimation 0.3s ease-in-out forwards;
+
+    @keyframes sellBlinkAnimation {
+      0%,
+      100% {
+        background-color: #ffffff00;
+      }
+
+      50% {
+        background-color: rgba(255, 91, 90, 0.5);
+      }
+    }
+  }
+
+  table {
+    border-top: 1px solid #8698aa;
+
+    tr:hover {
+      background: #1e3059 !important;
+    }
+
+    th {
+      padding: 5px 10px;
+      font-weight: 550;
+      font-size: 14px;
+      color: #8698aa;
+    }
+
+    td:first-child {
+      text-align: left;
+    }
+
+    td {
+      text-align: right;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 0px 10px;
+    }
+  }
+}
