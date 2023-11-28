@@ -318,72 +318,79 @@ function useWebSocket() {
 </script>
 
 <template>
-  <div class="order-book-area">
-    <div class="title">
-      Order Book
+    <div style="width: 270px; margin-bottom: 20px; background: #131b29; padding: 20px; border-radius: 8px;">
+      <h4>※ 缺少邏輯</h4>
+      <p>
+        還缺少因應 websocket 進來價位去抓取前後8筆資料呈現
+        導致進來價位容易與之前價位落差越來越大，以致畫面更新不明顯
+      </p>
     </div>
-    <table>
-      <thead>
-        <th>
-          Price(USD)
-        </th>
-        <th align="right" width="50">
-          Size
-        </th>
-        <th align="right" width="120">
-          Total
-        </th>
-      </thead>
-      <tbody>
-        <tr v-for="(sellData, sellIdx) in orderBookTable.sell" :key="`sell-${sellIdx}`" class="sell" :class="{
-          'sell-blinking': shouldRowBlink.sell[sellIdx],
-        }">
-          <td class="sell-text">
-            {{ thousandths(sellData[0]) }}
-          </td>
-          <td :class="{
-            'buy-blinking': shouldTdBlink.sell[sellIdx],
-            'sell-blinking': !shouldTdBlink.sell[sellIdx],
+    <div class="order-book-area">
+      <div class="title">
+        Order Book
+      </div>
+      <table>
+        <thead>
+          <th>
+            Price(USD)
+          </th>
+          <th align="right" width="50">
+            Size
+          </th>
+          <th align="right" width="120">
+            Total
+          </th>
+        </thead>
+        <tbody>
+          <tr v-for="(sellData, sellIdx) in orderBookTable.sell" :key="`sell-${sellIdx}`" class="sell" :class="{
+            'sell-blinking': shouldRowBlink.sell[sellIdx],
           }">
-            {{ thousandths(sellData[1]) }}
-          </td>
-          <td class="total">
-            <div class="container">
-              <div class="sell-progress" :style="`width: ${totalMap.sell[sellData[0]].progress}%;`">
-                {{ thousandths(totalMap.sell[sellData[0]].total) }}
+            <td class="sell-text">
+              {{ thousandths(sellData[0]) }}
+            </td>
+            <td :class="{
+              'buy-blinking': shouldTdBlink.sell[sellIdx],
+              'sell-blinking': !shouldTdBlink.sell[sellIdx],
+            }">
+              {{ thousandths(sellData[1]) }}
+            </td>
+            <td class="total">
+              <div class="container">
+                <div class="sell-progress" :style="`width: ${totalMap.sell[sellData[0]].progress}%;`">
+                  {{ thousandths(totalMap.sell[sellData[0]].total) }}
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            <div class="last-price" :class="[lastPrice.thanBig ? 'more-than' : 'less-than']">
-              {{ thousandths(lastPrice.data?.price) }}
-              <component v-show="lastPrice.data?.price" :is="lastPrice.thanBig ? upIcon : downIcon" />
-            </div>
-          </td>
-        </tr>
-        <tr v-for="(buyData, buyIdx) in orderBookTable.buy" :key="`buy-${buyIdx}`" class="buy" :class="{
-          'buy-blinking': shouldRowBlink.buy[buyIdx],
-        }">
-          <td class="buy-text">
-            {{ thousandths(buyData[0]) }}
-          </td>
-          <td :class="{
-            'buy-blinking': shouldTdBlink.buy[buyIdx],
-            'sell-blinking': !shouldTdBlink.buy[buyIdx],
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <div class="last-price" :class="[lastPrice.thanBig ? 'more-than' : 'less-than']">
+                {{ thousandths(lastPrice.data?.price) }}
+                <component v-show="lastPrice.data?.price" :is="lastPrice.thanBig ? upIcon : downIcon" />
+              </div>
+            </td>
+          </tr>
+          <tr v-for="(buyData, buyIdx) in orderBookTable.buy" :key="`buy-${buyIdx}`" class="buy" :class="{
+            'buy-blinking': shouldRowBlink.buy[buyIdx],
           }">
-            {{ thousandths(buyData[1]) }}
-          </td>
-          <td class="total">
-            <div class="container">
-              <div class="buy-progress" :style="`width: ${totalMap.buy[buyData[0]].progress}%;`">
-                {{ thousandths(totalMap.buy[buyData[0]].total) }}
+            <td class="buy-text">
+              {{ thousandths(buyData[0]) }}
+            </td>
+            <td :class="{
+              'buy-blinking': shouldTdBlink.buy[buyIdx],
+              'sell-blinking': !shouldTdBlink.buy[buyIdx],
+            }">
+              {{ thousandths(buyData[1]) }}
+            </td>
+            <td class="total">
+              <div class="container">
+                <div class="buy-progress" :style="`width: ${totalMap.buy[buyData[0]].progress}%;`">
+                  {{ thousandths(totalMap.buy[buyData[0]].total) }}
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </template>

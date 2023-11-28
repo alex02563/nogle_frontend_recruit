@@ -1,21 +1,14 @@
-# Vue 3 + Vite(Node v16.15.0)
+# nogle_frontend_recruit 紀錄
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 技術
+* Vue 3
+* Vite(Node v16.15.0)
+* WebSocket
 
-While this project uses Vue.js, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+## Order Book
 
-## Deploy Your Own
+BTC-PERP → BTCPFC 匯率及時換匯
 
-Deploy your own Vite project with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/vite&template=vite)
-
-_Live Example: https://vite-vue-template.vercel.app_
-
-### Deploying From Your Terminal
-
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
-
-```shell
-$ vercel
-```
+## 開發失誤缺少邏輯
+    還缺少因應 websocket 進來價位去抓取前後8筆資料呈現
+    導致進來價位容易與之前價位落差越來越大，以致畫面更新不明顯
