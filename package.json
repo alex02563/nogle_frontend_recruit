@@ -2,7 +2,6 @@
   "name": "nogle_frontend_recruit_test",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
