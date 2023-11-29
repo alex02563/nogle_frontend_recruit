@@ -1,13 +1,13 @@
-# nogle_frontend_recruit 紀錄
+# nogle_frontend_recruit 筆試紀錄
+* 開發 Order Book BTC-PERP → BTCPFC 匯率及時換匯
+
+* Deploy : [Live Demo](https://nogle-frontend-recruit.vercel.app/) by vercel
+
 
 ## 技術
 * Vue 3
 * Vite(Node v16.15.0)
 * WebSocket
-
-## Order Book
-
-BTC-PERP → BTCPFC 匯率及時換匯
 
 ## 開發失誤缺少邏輯
     還缺少因應 websocket 進來價位去抓取前後8筆資料呈現
